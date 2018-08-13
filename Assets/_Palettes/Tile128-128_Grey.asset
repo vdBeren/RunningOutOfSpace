@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Tile128-128_Grey
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: da3fc0ae0a431d6449f3dca211af8e4c, type: 3}
-  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
+  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 0.19607843}
   m_Transform:
     e00: 1
     e01: 0
