@@ -40,7 +40,7 @@ namespace Cat {
 
 		void FollowMouse(){
 			// THE CAT FOLLOWS THE MOUSE HEHE
-			//Cursor.visible = false;
+			Cursor.visible = false;
 			var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			this.transform.position = new Vector3 (mousePos.x + itemHeldSize.x/2*0, mousePos.y - itemHeldSize.y*0, -1); //TODO: FIX THIS MOUSE POSITIONING THING
 
@@ -68,9 +68,6 @@ namespace Cat {
 
 			itemHeldSize = itemHeld.GetComponent<SpriteRenderer> ().bounds.size;
 
-			Debug.Log ("SIZE X: " + itemHeldSize.x);
-			Debug.Log ("SIZE Y: " + itemHeldSize.y);
-
 			Vector3 pawsPostion = paws.transform.position;
 
 			itemHeld.transform.position = new Vector3(pawsPostion.x - itemHeldSize.x/4, pawsPostion.y + itemHeldSize.y/4, pawsPostion.z - 1);
@@ -95,13 +92,15 @@ namespace Cat {
 
 			var grid = Cat.GameManager.instance.itemGrid;
 		//	var itemCellPos = grid.WorldToCell(itemHeld.transform.position);
-			var itemCellPos = grid.WorldToCell (new Vector3(itemHeld.transform.position.x + itemHeldSize.x/2.5f, itemHeld.transform.position.y, itemHeld.transform.position.z));
+			var itemCellPos = grid.WorldToCell (new Vector3(itemHeld.transform.position.x + itemHeldSize.x/3.0f, itemHeld.transform.position.y + itemHeldSize.y/3.0f, itemHeld.transform.position.z));
 
 			catCollider.enabled = true;
 
 			var cs = grid.cellSize;
 
-			itemHeld.transform.position = grid.GetCellCenterWorld (itemCellPos);
+			var gridCellPos = grid.GetCellCenterWorld (itemCellPos);
+
+			itemHeld.transform.position = gridCellPos;
 			itemHeld.transform.position = new Vector3 (itemHeld.transform.position.x - cs.x/2, itemHeld.transform.position.y - cs.y/2, itemHeld.transform.position.z);
 
 			itemHeldSize = new Vector2 (0, 0);
